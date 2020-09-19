@@ -1,5 +1,6 @@
 package com.twenk11k.sideprojects.newsapp.ui.activity.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import com.twenk11k.sideprojects.newsapp.R
 import com.twenk11k.sideprojects.newsapp.common.DataBindingActivity
 import com.twenk11k.sideprojects.newsapp.databinding.ActivityMainBinding
 import com.twenk11k.sideprojects.newsapp.model.Article
+import com.twenk11k.sideprojects.newsapp.ui.activity.webbrowser.WebBrowserActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -79,7 +81,9 @@ class MainActivity : DataBindingActivity(), ArticleAdapterListener {
     }
 
     override fun browseWebsite(url: String) {
-
+        val intent = Intent(this@MainActivity, WebBrowserActivity::class.java)
+        intent.putExtra("article_url",url)
+        startActivity(intent)
     }
 
 }
