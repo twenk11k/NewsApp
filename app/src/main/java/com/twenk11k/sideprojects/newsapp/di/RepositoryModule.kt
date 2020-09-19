@@ -1,5 +1,6 @@
 package com.twenk11k.sideprojects.newsapp.di
 
+import com.twenk11k.sideprojects.newsapp.db.ArticleDao
 import com.twenk11k.sideprojects.newsapp.network.NewsClient
 import com.twenk11k.sideprojects.newsapp.repository.MainRepository
 import dagger.Module
@@ -14,8 +15,8 @@ class RepositoryModule {
 
     @Provides
     @ActivityRetainedScoped
-    fun provideMainRepository(newsClient: NewsClient): MainRepository {
-        return MainRepository(newsClient)
+    fun provideMainRepository(newsClient: NewsClient, articleDao: ArticleDao): MainRepository {
+        return MainRepository(newsClient, articleDao)
     }
 
 }
