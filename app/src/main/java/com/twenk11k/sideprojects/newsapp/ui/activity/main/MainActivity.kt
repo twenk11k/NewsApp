@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.VisibleForTesting
 import com.twenk11k.sideprojects.newsapp.R
+import com.twenk11k.sideprojects.newsapp.common.DataBindingActivity
 import com.twenk11k.sideprojects.newsapp.databinding.ActivityMainBinding
-import com.twenk11k.sideprojects.newsapp.ui.activity.DataBindingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

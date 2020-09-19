@@ -18,6 +18,6 @@ data class Article(
 ) {
     @JsonClass(generateAdapter = true)
     data class Source(
-        @field:Json(name = "name") val id: String?
+        @field:Json(name = "name") val name: String?
     )
 }

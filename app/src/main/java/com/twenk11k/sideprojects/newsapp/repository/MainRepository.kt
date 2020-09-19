@@ -17,15 +17,17 @@ import javax.inject.Inject
 class MainRepository @Inject constructor(private val newsClient: NewsClient, private val articleDao: ArticleDao) {
 
     @WorkerThread
-    suspend fun retrieveNewsResponse(onError: (String) -> Unit) = flow {
+    suspend fun retrieveNewsResponse(onSuccess: () -> Unit, onError: (String) -> Unit) = flow {
         val articleList = articleDao.getArticleList()
         if(articleList.isEmpty()) {
             newsClient.fetchNewsResponse().apply {
                 this.suspendOnSuccess {
                     data.whatIfNotNull {
                         if(it.articles != null) {
+                            Log.d(javaClass.simpleName, "api called")
                             emit(it.articles)
                             articleDao.insertArticleList(it.articles)
+                            onSuccess()
                         }
                     }
                 }.onError {
@@ -37,7 +39,9 @@ class MainRepository @Inject constructor(private val newsClient: NewsClient, pri
                 }
             }
         } else {
+            Log.d(javaClass.simpleName, "db called")
             emit(articleList)
+            onSuccess()
         }
     }.flowOn(Dispatchers.IO)
 

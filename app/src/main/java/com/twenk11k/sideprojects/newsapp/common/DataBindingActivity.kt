@@ -1,4 +1,4 @@
-package com.twenk11k.sideprojects.newsapp.ui.activity
+package com.twenk11k.sideprojects.newsapp.common
 
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity

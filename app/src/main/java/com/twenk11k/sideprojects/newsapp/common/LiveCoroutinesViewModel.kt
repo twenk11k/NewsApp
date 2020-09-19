@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.twenk11k.sideprojects.newsapp.ui.activity
+package com.twenk11k.sideprojects.newsapp.common
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
