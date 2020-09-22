@@ -115,5 +115,7 @@ dependencies {
     // Ssp
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
 
+    // Material Dialogs - Input
+    implementation 'com.afollestad.material-dialogs:input:3.3.0'
 
 }

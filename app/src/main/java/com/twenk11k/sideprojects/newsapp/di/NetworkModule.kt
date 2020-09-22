@@ -48,5 +48,4 @@ object NetworkModule {
         return NewsClient(newsService)
     }
 
-
 }

@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 class NewsClient @Inject constructor(private val newsService: NewsService) {
 
-    suspend fun fetchNewsResponse() =
-        newsService.fetchNewsResponse()
+    suspend fun fetchNewsResponse(apiKey: String) =
+        newsService.fetchNewsResponse(apiKey)
 
 }

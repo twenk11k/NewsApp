@@ -2,6 +2,10 @@ package com.twenk11k.sideprojects.newsapp.extension
 
 import android.view.View
 
+fun View.gone() {
+    visibility = View.GONE
+}
+
 fun View.gone(shouldBeGone: Boolean) {
     visibility = if (shouldBeGone) {
         View.GONE

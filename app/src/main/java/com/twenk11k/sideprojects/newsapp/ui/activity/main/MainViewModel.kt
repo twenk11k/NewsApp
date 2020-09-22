@@ -20,14 +20,25 @@ class MainViewModel @ViewModelInject constructor(private val mainRepository: Mai
     val toast: LiveData<String> get() = _toast
 
     val isLoading: ObservableBoolean = ObservableBoolean(false)
+    val shouldDisplayError: ObservableBoolean = ObservableBoolean(false)
+
+    var apiKey = "88df2868e58e4ccfa1c03cd53d41ceb9"
 
     init {
         newsLiveData = _newsLiveData.switchMap {
             isLoading.set(true)
+            shouldDisplayError.set(false)
             launchOnViewModelScope {
                 this.mainRepository.retrieveNewsResponse(
-                    onSuccess = { isLoading.set(false) },
-                    onError = { _toast.postValue(it) }
+                    apiKey,
+                    onSuccess = {
+                        isLoading.set(false)
+                        shouldDisplayError.set(false)
+                    },
+                    onError = {
+                        isLoading.set(false)
+                        shouldDisplayError.set(true)
+                        _toast.postValue(it) }
                 ).asLiveData()
             }
         }

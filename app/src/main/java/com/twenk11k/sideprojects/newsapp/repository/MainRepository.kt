@@ -17,10 +17,10 @@ import javax.inject.Inject
 class MainRepository @Inject constructor(private val newsClient: NewsClient, private val articleDao: ArticleDao) {
 
     @WorkerThread
-    suspend fun retrieveNewsResponse(onSuccess: () -> Unit, onError: (String) -> Unit) = flow {
+    suspend fun retrieveNewsResponse(apiKey: String, onSuccess: () -> Unit, onError: (String) -> Unit) = flow {
         val articleList = articleDao.getArticleList()
         if(articleList.isEmpty()) {
-            newsClient.fetchNewsResponse().apply {
+            newsClient.fetchNewsResponse(apiKey).apply {
                 this.suspendOnSuccess {
                     data.whatIfNotNull {
                         if(it.articles != null) {

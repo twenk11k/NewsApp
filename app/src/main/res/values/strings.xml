@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">NewsApp</string>
     <string name="database">NewsApp.db</string>
+    <string name="update_api_key">Update Api Key</string>
+    <string name="try_again">Try again</string>
+    <string name="update">Update</string>
 </resources>
